@@ -1,0 +1,41 @@
+def main():
+    fish = 1
+    while True:
+        total, enouth = fish, True
+        for _ in range(5):
+            if(total - 1) % 5 == 0:
+                total = (total - 1) // 5 * 4
+            else:
+                enough = False
+                break
+        if enough:
+            print(f'总共有{fish}条鱼')
+            break
+        fish += 1
+if __name__ == '__main__':
+    main()
+#不可执行的五人分鱼情景！
+
+def need(n, r):
+    if n % 5 == 1:
+        if r == 5:
+            return True
+        else:
+            return need(n - (n - 1) / 5 -1, r + 1)
+    else:
+        return False
+n = 6
+while True:
+    if need(n, 1):
+        break
+    else:
+        n = n + 5
+print(n)
+#可执行递归调用的五人分鱼情景
+
+def min_fish(n):
+    return n ** n - (n -1)
+if __name__ == '__main__':
+    n = int(input('请输入人数:'))
+    print('至少捕了{0}条鱼'.format(min_fish(n)))
+#五人分鱼发现规律版本
